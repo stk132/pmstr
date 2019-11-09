@@ -13,9 +13,9 @@ import (
     "github.com/aws/aws-sdk-go/service/ssm"
 )
 
-cfg := aws.NewConfig()
+sess := session.New(aws.NewConfig())
 	
-client := pmstr.New(ssm.New(cfg))
+client := pmstr.New(ssm.New(sess))
 //Get StringType Paramter
 param, err := client.Get("parameter_name").AsString()
 
