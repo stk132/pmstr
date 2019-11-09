@@ -13,9 +13,19 @@ type mockGetParameterOutput struct {
 	err error
 }
 
+type mockPutParameterOutput struct {
+	output *ssm.PutParameterOutput
+	err error
+}
+
 type mockSSMClient struct {
 	ssmiface.SSMAPI
 	mockGetParamOutputMap map[string]*mockGetParameterOutput
+	mockPutParameterOutput *mockPutParameterOutput
+}
+
+func (m *mockSSMClient) PutParameter(input *ssm.PutParameterInput) (*ssm.PutParameterOutput, error) {
+	return m.mockPutParameterOutput.output, m.mockPutParameterOutput.err
 }
 
 func (m *mockSSMClient) GetParameter(input *ssm.GetParameterInput) (*ssm.GetParameterOutput, error) {
