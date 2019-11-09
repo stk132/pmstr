@@ -23,7 +23,7 @@ param, err := client.Get("parameter_name").AsString()
 params, err := client.Get("string_list_parameter_name").AsStringList()
 
 //Get SecureStringType Parameter
-secureParam, err := client.Get("secure_parameter_name")).AsSecureString()
+secureParam, err := client.Get("secure_parameter_name").AsSecureString()
 ```
 
 

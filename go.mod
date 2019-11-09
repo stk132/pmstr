@@ -1,4 +1,4 @@
-module pmstr
+module github.com/stk132/pmstr
 
 go 1.12
 
