@@ -25,6 +25,14 @@ params, err := client.Get("string_list_parameter_name").AsStringList()
 //Get SecureStringType Parameter
 secureParam, err := client.Get("secure_parameter_name").AsSecureString()
 
+//call GetParameters
+param,s err := client.GetParameters().setNames([]string{"one", "two", "three"}).Run()
+
+oneValue, err := params["one"].AsString() // or AsStringList, AsSecureString
+twoValue, err := params["two"].AsString()
+threeValue, err := params["threee"]
+
+
 //Put StringType Parameter
 output, err := client.PutString("parameter_name", "parameter_value").Do()
 
@@ -46,4 +54,5 @@ output, err := client.PutString("parameter_name", "parameter_value")
 ## supported API
 
 - ssm.GetParameter
+- ssm.GetParameters
 - ssm.PutParameter
