@@ -101,6 +101,10 @@ func (pgpov *pmstrGetParametersOutputValue) errCheck(paramType string) error {
 	return nil
 }
 
+func (pgpov *pmstrGetParametersOutputValue) Value() (string, error) {
+	return aws.StringValue(pgpov.parameter.Value), nil
+}
+
 func (pgpov *pmstrGetParametersOutputValue) AsString() (string, error) {
 	if err := pgpov.errCheck(ssm.ParameterTypeString); err != nil {
 		return "", err

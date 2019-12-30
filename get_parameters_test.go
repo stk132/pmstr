@@ -220,3 +220,30 @@ func TestPmstrGetParametersOutputValue_AsSecureString(t *testing.T) {
 		t.Error("should be err")
 	}
 }
+
+func TestPmstrGetParametersOutputValue_Value(t *testing.T) {
+	wont := "test"
+	sut := &pmstrGetParametersOutputValue{
+		err:       nil,
+		parameter: &ssm.Parameter{
+			ARN:              nil,
+			LastModifiedDate: nil,
+			Name:             nil,
+			Selector:         nil,
+			SourceResult:     nil,
+			Type:             aws.String(ssm.ParameterTypeSecureString),
+			Value:            aws.String(wont),
+			Version:          nil,
+		},
+	}
+
+	actual, err := sut.Value()
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if actual != wont {
+		t.Errorf("wont: %s, got: %s", wont, actual)
+	}
+
+}
